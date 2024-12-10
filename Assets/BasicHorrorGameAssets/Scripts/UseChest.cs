@@ -14,6 +14,7 @@ public class UseChest : MonoBehaviour
     private BoxCollider boxCollider;
 
     private bool inReach;
+    private bool hasPlayedSound = false; 
 
     void Start()
     {
@@ -25,6 +26,16 @@ public class UseChest : MonoBehaviour
         audioSource = OB.GetComponent<AudioSource>();
         animator = OB.GetComponent<Animator>();
         boxCollider = OB.GetComponent<BoxCollider>();
+
+        if (audioSource == null)
+        {
+            Debug.LogWarning("AudioSource not assigned on " + OB.name);
+        }
+
+        if (openSound == null)
+        {
+            Debug.LogWarning("openSound AudioClip not assigned for " + OB.name);
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -53,11 +64,15 @@ public class UseChest : MonoBehaviour
             objToActivate.SetActive(true);
             animator.SetBool("open", true);
             boxCollider.enabled = false;
+        }
 
-            if (audioSource != null && openSound != null && !audioSource.isPlaying)
+        // Mainkan suara saat animasi peti berubah menjadi "open."
+        if (animator.GetBool("open") && !hasPlayedSound)
+        {
+            if (audioSource != null && openSound != null)
             {
-                audioSource.clip = openSound;
-                audioSource.Play();
+                audioSource.PlayOneShot(openSound);
+                hasPlayedSound = true; 
             }
         }
     }

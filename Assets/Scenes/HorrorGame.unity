@@ -1444,7 +1444,7 @@ MonoBehaviour:
   chaseSpeed: 3.5
   sightDistance: 30
   maxVolume: 1
-  minVolume: 0.6
+  minVolume: 0.9
   idleSound: {fileID: 8300000, guid: 727cc9b5b68ce4a4da1968c42eda6842, type: 3}
   walkingSound: {fileID: 8300000, guid: def584afe616b634abf7a7cf8494da4e, type: 3}
   chasingSound: {fileID: 8300000, guid: 14ba1465b94f97242abee9521cae3db2, type: 3}
@@ -5002,11 +5002,12 @@ MonoBehaviour:
   playerCam: {fileID: 239688919}
   walkSpeed: 3
   runSpeed: 5
-  jumpPower: 0
   gravity: 10
   lookSpeed: 2
   lookXLimit: 75
   cameraRotationSmooth: 5
+  runBobIntensity: 0.2
+  runBobFrequency: 10
   woodFootstepSounds:
   - {fileID: 8300000, guid: 1320ccff9662bba47ad4f75e640f55a2, type: 3}
   tileFootstepSounds: []

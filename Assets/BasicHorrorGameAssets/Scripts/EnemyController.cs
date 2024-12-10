@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     public float chaseSpeed = 4f; // Chasing speed.
     public float sightDistance = 10f;
     public float maxVolume = 1f; 
-    public float minVolume = 0.3f; 
+    public float minVolume = 0.9f; 
     public AudioClip idleSound;
     public AudioClip walkingSound;
     public AudioClip chasingSound;
