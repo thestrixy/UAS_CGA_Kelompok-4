@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuStuff : MonoBehaviour
 {
-    public string nextSceneName; // Name of the next scene to load
+    public string nextSceneName; // Nama scene berikutnya untuk dimuat
+
     public void B_LoadScene()
     {
-        SceneManager.LoadScene(nextSceneName);
+        // Muat scene Loading terlebih dahulu
+        SceneManager.LoadScene("LoadingScene"); // Pastikan nama scene ini sesuai
     }
-
 
     public void B_QuitGame()
     {
