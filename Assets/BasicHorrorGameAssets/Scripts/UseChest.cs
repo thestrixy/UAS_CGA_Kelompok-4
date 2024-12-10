@@ -7,20 +7,24 @@ public class UseChest : MonoBehaviour
     private GameObject OB;
     public GameObject handUI;
     public GameObject objToActivate;
+    private AudioSource audioSource;
+    public AudioClip openSound;
 
+    private Animator animator;
+    private BoxCollider boxCollider;
 
     private bool inReach;
 
-
     void Start()
     {
-
         OB = this.gameObject;
 
         handUI.SetActive(false);
-
         objToActivate.SetActive(false);
 
+        audioSource = OB.GetComponent<AudioSource>();
+        animator = OB.GetComponent<Animator>();
+        boxCollider = OB.GetComponent<BoxCollider>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -30,7 +34,6 @@ public class UseChest : MonoBehaviour
             inReach = true;
             handUI.SetActive(true);
         }
-
     }
 
     void OnTriggerExit(Collider other)
@@ -44,15 +47,18 @@ public class UseChest : MonoBehaviour
 
     void Update()
     {
-
-
         if (inReach && Input.GetButtonDown("Interact"))
         {
             handUI.SetActive(false);
             objToActivate.SetActive(true);
-            OB.GetComponent<Animator>().SetBool("open", true);
-            OB.GetComponent<BoxCollider>().enabled = false;
+            animator.SetBool("open", true);
+            boxCollider.enabled = false;
+
+            if (audioSource != null && openSound != null && !audioSource.isPlaying)
+            {
+                audioSource.clip = openSound;
+                audioSource.Play();
+            }
         }
     }
-
 }

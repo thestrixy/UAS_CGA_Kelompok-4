@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
     public float walkSpeed = 2f; // Walking speed.
     public float chaseSpeed = 4f; // Chasing speed.
     public float sightDistance = 10f;
+    public float maxVolume = 1f; 
+    public float minVolume = 0.3f; 
     public AudioClip idleSound;
     public AudioClip walkingSound;
     public AudioClip chasingSound;
@@ -83,6 +85,7 @@ public class EnemyController : MonoBehaviour
                 }
                 break;
         }
+        AdjustWalkingSoundVolume();
     }
 
     private void CheckForPlayerDetection()
@@ -108,6 +111,21 @@ public class EnemyController : MonoBehaviour
             audioSource.Play();
         }
     }
+
+    private void AdjustWalkingSoundVolume()
+    {
+        if (currentState == EnemyState.Walk || currentState == EnemyState.Chase)
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            float volume = Mathf.Lerp(maxVolume, minVolume, distanceToPlayer / sightDistance);
+            audioSource.volume = Mathf.Clamp(volume, minVolume, maxVolume);
+        }
+        else
+        {
+            audioSource.volume = minVolume; 
+        }
+    }
+
 
     private void NextWaypoint()
     {
