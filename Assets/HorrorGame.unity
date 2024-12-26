@@ -8482,6 +8482,33 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1518664501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6754674874353905211, guid: 7eba3fdf68aa1ed499a32655f9b87cc0, type: 3}
+  m_PrefabInstance: {fileID: 1993080821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1518664503
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518664501}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3633865748600368068, guid: 7eba3fdf68aa1ed499a32655f9b87cc0, type: 3}
 --- !u!1 &1568707452
 GameObject:
   m_ObjectHideFlags: 0
@@ -9049,7 +9076,7 @@ MonoBehaviour:
   UIText: {fileID: 1568707452}
   invKey: {fileID: 1368000344}
   fadeFX: {fileID: 2096408754}
-  nextSceneName: MainMenu
+  nextSceneName: WinScene
 --- !u!65 &1790501019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9918,6 +9945,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1422740621}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -6754674874353905211, guid: 7eba3fdf68aa1ed499a32655f9b87cc0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1518664503}
     - targetCorrespondingSourceObject: {fileID: -6019679308074869713, guid: 7eba3fdf68aa1ed499a32655f9b87cc0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1993080827}
