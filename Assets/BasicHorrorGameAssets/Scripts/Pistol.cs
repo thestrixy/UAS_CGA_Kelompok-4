@@ -83,29 +83,21 @@ public class Pistol : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootRange))
             {
-                // Check if the hit object has the "enemy" tag
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    // Get the EnemyHealth component from the hit object
                     EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
-
-                    // Check if the enemy has the EnemyHealth component
                     if (enemyHealth != null)
                     {
-                        // Apply damage to the enemy
-                        enemyHealth.TakeDamage(damager); // Replace 'damager' with the actual damage value.
+                        enemyHealth.TakeDamage(damager);
                     }
                 }
 
-                // Instantiate impact effect at the hit point
                 Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             }
 
             // Instantiate the empty cartridge
             GameObject cartridge = Instantiate(cartridgePrefab, cartridgeEjectionPoint.position, cartridgeEjectionPoint.rotation);
             Rigidbody cartridgeRigidbody = cartridge.GetComponent<Rigidbody>();
-
-            // Apply force to eject the cartridge
             cartridgeRigidbody.AddForce(cartridgeEjectionPoint.right * cartridgeEjectionForce, ForceMode.Impulse);
 
             StartCoroutine(endAnimations());
@@ -117,13 +109,20 @@ public class Pistol : MonoBehaviour
             // Reduce ammo count
             currentAmmoInMag--;
 
+            // Check if this was the last bullet
+            if (currentAmmoInMag == 0)
+            {
+                Debug.Log("Out of ammo!");
+                gun.SetTrigger("outofammo"); // Trigger the "Out of Ammo" animation
+            }
+
             // Start the shoot cooldown
             shootTimer = shootCooldown;
         }
-        else
+        else if (currentAmmoInMag == 0) // Attempting to shoot with an empty magazine
         {
-            // Out of ammo in the magazine or shoot on cooldown
-            Debug.Log("Cannot shoot");
+            Debug.Log("Out of ammo!");
+            gun.SetTrigger("outofammo"); // Trigger the "Out of Ammo" animation
         }
     }
 
