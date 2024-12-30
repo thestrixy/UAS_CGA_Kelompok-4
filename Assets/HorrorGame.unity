@@ -6757,7 +6757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAmmoInMag: 15
-  maxAmmoInStorage: 0
+  maxAmmoInStorage: 30
   shootCooldown: 0.75
   reloadCooldown: 0.5
   shootRange: 250
