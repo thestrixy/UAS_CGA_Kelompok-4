@@ -1554,6 +1554,8 @@ MonoBehaviour:
   idleSound: {fileID: 8300000, guid: 727cc9b5b68ce4a4da1968c42eda6842, type: 3}
   walkingSound: {fileID: 8300000, guid: def584afe616b634abf7a7cf8494da4e, type: 3}
   chasingSound: {fileID: 8300000, guid: 14ba1465b94f97242abee9521cae3db2, type: 3}
+  collisionCollider: {fileID: 496815871}
+  triggerCollider: {fileID: 496815872}
 --- !u!95 &496815868
 Animator:
   serializedVersion: 5

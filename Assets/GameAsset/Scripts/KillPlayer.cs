@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class KillPlayer : MonoBehaviour
 {
-    public string nextSceneName; // Name of the next scene to load
-    public float delay = 0.5f; // Delay in seconds before loading the next scene
+    public string nextSceneName; 
+    public float delay = 0.5f; 
     public GameObject fadeout;
 
     private bool playerInsideTrigger = false;

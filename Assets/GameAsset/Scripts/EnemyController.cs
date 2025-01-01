@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
     private Transform player;
     private AudioSource audioSource;
 
+    public CapsuleCollider collisionCollider;
+    public CapsuleCollider triggerCollider;     
     private enum EnemyState { Idle, Walk, Chase }
     private EnemyState currentState = EnemyState.Idle;
 
@@ -141,10 +143,27 @@ public class EnemyController : MonoBehaviour
         animator.enabled = true;
     }
 
+
+    private void DisableColliders()
+    {
+        if (collisionCollider != null)
+        {
+            collisionCollider.enabled = false; // Disable collision collider
+        }
+
+        if (triggerCollider != null)
+        {
+            triggerCollider.enabled = false; // Disable trigger collider
+        }
+
+        Debug.Log("Both colliders have been disabled.");
+    }
+
     // Draw a green raycast line at all times and switch to red when the player is detected.
     private void OnDrawGizmos()
     {
         Gizmos.color = currentState == EnemyState.Chase ? Color.red : Color.green;
         Gizmos.DrawLine(transform.position, player.position);
     }
+
 }
